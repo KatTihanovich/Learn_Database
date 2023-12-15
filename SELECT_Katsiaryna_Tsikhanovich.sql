@@ -16,9 +16,6 @@ HAVING SUM(p.amount) = (
     WHERE s.store_id = res.store_id
     GROUP BY res.store_id)
 ORDER BY s.store_id;
-
-
-
     
 --1.2
 SELECT DISTINCT s.staff_id, s.first_name, s.last_name, SUM(p.amount) OVER (PARTITION BY s.staff_id) AS total
@@ -91,24 +88,3 @@ JOIN film_actor fa ON a.actor_id = fa.actor_id
 JOIN film ON fa.film_id = f.film_id
 GROUP BY actor.actor_id, actor.first_name, actor.last_name
 HAVING MAX(film.release_year) < EXTRACT(YEAR FROM CURRENT_DATE) - 4;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
---3.2
-
-
